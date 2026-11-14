@@ -1,6 +1,18 @@
 ﻿server:
   port: 8081
 
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ticketflow
+    username: ticketflow
+    password: ${TICKETFLOW_DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
 management:
   endpoints:
     web:

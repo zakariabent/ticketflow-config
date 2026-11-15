@@ -1,4 +1,5 @@
-﻿server:
+﻿
+server:
   port: 8080
 
 spring:
@@ -14,6 +15,13 @@ spring:
               uri: lb://customer-service
               predicates:
                 - Path=/api/customers/**
+              filters:
+                - AddResponseHeader=X-Served-By, api-gateway
+
+            - id: event-service
+              uri: lb://event-service
+              predicates:
+                - Path=/api/events/**
               filters:
                 - AddResponseHeader=X-Served-By, api-gateway
 
